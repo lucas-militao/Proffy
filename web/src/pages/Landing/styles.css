@@ -24,10 +24,11 @@
   margin-bottom: 3.2rem;
 }
 
-.logo-container h1 {
+.logo-container h2 {
   font-weight: 500;
   font-size: 2.4rem;
   line-height: 4.6rem;
+  margin-top: 0.8rem;
 }
 
 .buttons-container {
@@ -77,6 +78,10 @@
   background: var(--color-secundary-dark);
 }
 
+.buttons-container a img {
+  margin-right: 2.4rem;
+}
+
 .total-connections {
   font-size: 1.8rem;
 
@@ -87,4 +92,49 @@
 
 .total-connections img {
   margin-left: 0.8rem;
+}
+
+/* Quando a page atingir 1100px vai aplicar a estilização abaixo */
+@media (min-width: 1100px) {
+  #page-landing-content {
+    max-width: 1100px;
+
+    display: grid;
+    grid-template-rows: 350px 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+      "logo hero hero"
+      "buttons buttons total";
+  }
+
+  .logo-container {
+    grid-area: logo;
+    align-self: center;
+    text-align: left;
+    margin: 0;
+  }
+
+  .logo-container h2 {
+    text-align: initial;
+    font-size: 3.6rem;
+  }
+
+  .hero-image {
+    grid-area: hero;
+    justify-self: end;
+  }
+
+  .buttons-container {
+    grid-area: buttons;
+    justify-content: flex-start;
+  }
+
+  .buttons-container a {
+    font-size: 2.4rem;
+  }
+
+  .total-connections {
+    grid-area: total;
+    justify-content: end;
+  }
 }
