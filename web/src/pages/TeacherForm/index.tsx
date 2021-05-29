@@ -7,8 +7,12 @@ import warningIcon from "../../assets/images/icons/warning.svg";
 import "./styles.css";
 import TextArea from "../../components/TextArea";
 import Select from "../../components/Select";
+import api from "../../services/api";
+import { useHistory } from "react-router";
 
 function TeacherForm() {
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
@@ -52,6 +56,26 @@ function TeacherForm() {
   // A função preventDefault evita o comportamento padrão ao fazer o submit de um formulário, que é o reloading da página.
   function handleCreateClass(e: FormEvent) {
     e.preventDefault();
+
+    api
+      .post("/classes", {
+        name,
+        avatar,
+        whatsapp,
+        bio,
+        subject,
+        cost: Number(cost),
+        schedule: scheduleItems,
+      })
+      .then(() => {
+        try {
+          alert("Cadastro realizado com sucesso!");
+
+          history.push("/");
+        } catch (error) {
+          alert("Erro no cadastro!");
+        }
+      });
 
     console.log({
       name,
