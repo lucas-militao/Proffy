@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import "./styles.css";
 
@@ -30,7 +29,7 @@ function TeacherList() {
           />
           <Select
             name="week_day"
-            label="Matéria"
+            label="Dia da semana"
             options={[
               { value: "0", label: "Domingo" },
               { value: "1", label: "Segunda-Feira" },
